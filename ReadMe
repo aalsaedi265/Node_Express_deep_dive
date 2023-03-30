@@ -1,0 +1,12 @@
+This is were I will house all my Express and Node project
+
+used to help better undersatnd the technology
+
+npm init -y       produces json file for retension
+
+main file is where the code will be done, be sure to name it as it is shown in the json
+
+npm i nodemon  to auto start server to see changees in real time
+
+PREVENT CROSS ORIGIN
+cliet josnn, creat a prozy with local host same as that of server
