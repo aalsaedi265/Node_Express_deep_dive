@@ -17,7 +17,26 @@ const errorHandler = (err, req, res, next) => {
                 message : err.message,
                 stackTrace : err.stack //shows which file is the problem at
             })
+        case constants.UNAUTHORIZED:
+                res.json({
+                    title: "unauthorized",
+                    message : err.message,
+                    stackTrace : err.stack //shows which file is the problem at
+                })
+        case constants.FORBIDDEN:
+                    res.json({
+                        title: "forbidden",
+                        message : err.message,
+                        stackTrace : err.stack //shows which file is the problem at
+                    })
+        case constants.SERVER_ERROR:
+                        res.json({
+                            title: "server error",
+                            message : err.message,
+                            stackTrace : err.stack //shows which file is the problem at
+                        })
         default:
+            console.log("perfection")
             break;
     }
 
