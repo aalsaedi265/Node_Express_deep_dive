@@ -21,10 +21,18 @@ const createContact = asyncHandler( async (req, res) => {
 
     res.status(201).json(person)
 })
-
-const deleteContact = asyncHandler( async (req, res) => {
-    res.status(200).json( {"Deadly Queen":`Bite The Dust ${req.params.id}`})
-})
+const deleteContact = asyncHandler(async (req, res) => {
+    console.log('Deleting contact with ID', req.params.id);
+    const number = await Contact.findById(req.params.id);
+    console.log('Found contact', number);
+    if (!number) {
+      res.status(404);
+      throw new Error('Contact not found');
+    }
+    await Contact.findByIdAndDelete(req.params.id) //Contact.remove() didn't work
+    console.log('Contact deleted');
+    res.status(200).json(number);
+  });
 const singleContact = asyncHandler( async (req, res) => {
 
     const singleContact = await Contact.findById(req.params.id)
