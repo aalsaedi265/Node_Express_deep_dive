@@ -11,7 +11,11 @@ const port = process.env.PORT || 5001
 
 //use is a middleware
 app.use(express.json() ) 
+//get date
 app.use("/api/contacts", require("./routes/contactRoutes.js"))
+//authenticate
+app.use("/api/users", require("./routes/userRoutes.js"))
+//help dev
 app.use(errorHandler)
 
 app.listen(port, ()=>{
