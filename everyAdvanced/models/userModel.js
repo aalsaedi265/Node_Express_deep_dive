@@ -1,23 +1,23 @@
 const mongoose = require("mongoose")
 
-const userSchema = mongoose.Schema.create({
-    username:{
-        type: String,
-        require: [true, "pelase add user name"]
-    },
-    phone:{
-        type: String,
-        require: [true, "pelase add phone information"],
-        unique: [true, "add unique phone number"]
-    },
-    occupation:{
-        type: String,
-        require : [true, "pelase add occupation information"]
-    }
-},
-{
-    timestamps:true
-}
+const userSchema = mongoose.Schema(
+    {
+        name:{
+            type: String,
+            required: [true,"Please add the contact name"]
+        },
+        phone:{
+            type: String,
+            required: [true,"Please add the contact phone"]
+            },
+        occupation: {
+            type: String,
+            required: [true,"Please add the occupation"]
+            }
+          },
+        {
+            timestamps: true
+        }
 )
 
 module.exports = mongoose.model("User", userSchema)
