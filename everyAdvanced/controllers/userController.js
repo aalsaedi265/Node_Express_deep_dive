@@ -3,6 +3,11 @@ const User = require("../models/userModel")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 
+
+
+
+
+
 const registerUser = asyncHandler(async (req, res)=>{
 
     const {name, phone, occupation} = req.body;
@@ -34,6 +39,10 @@ const registerUser = asyncHandler(async (req, res)=>{
     res.json({message : "Regester the user"})
 })
 
+
+
+
+
 const loginUser = asyncHandler(async (req, res)=>{
     const {phone,occupation} = req.body
     if( !phone || !occupation){
@@ -54,18 +63,21 @@ const loginUser = asyncHandler(async (req, res)=>{
             }
         },
         process.env.ACCESS_TOKEN_SECRET,
-        {expiresIn: "1m"}
+        {expiresIn: "100m"}
         )
         res.status(200).json({accessToken})
     }else{
         res.status(401)
-        throw new Error("email or password is not valid")
+        throw new Error("phone or occupation is not valid")
     }
-    res.json({message : "Login the user"})
-})
+}) 
+
+
+
+
 //private
 const currentUser = asyncHandler(async (req, res)=>{
-    res.json({message : "current the user"})
+    res.json(req.user)
 })
 
 

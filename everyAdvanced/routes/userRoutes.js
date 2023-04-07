@@ -1,5 +1,6 @@
 
 const express = require("express")
+const validateToken = require("../middleWare/validateToken")
 const {
     registerUser,
     loginUser, 
@@ -11,7 +12,7 @@ router.post("/register", registerUser)
 
 router.post("/login", loginUser)
 
-router.get("/current", currentUser)
+router.get("/current", validateToken ,currentUser)
 
 
 module.exports = router 
